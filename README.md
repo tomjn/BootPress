@@ -15,4 +15,7 @@ Included libraries/tools
 
 Installation
 -------
+In your WordPress theme folder:
 
+    git clone git://github.com/Tarendai/BootPress.git BootPress
+    git submodule update --init
