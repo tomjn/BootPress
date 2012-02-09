@@ -1,0 +1,3 @@
+[submodule "wp-less"]
+	path = wp-less
+	url = https://github.com/sanchothefat/wp-less.git
