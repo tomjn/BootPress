@@ -5,10 +5,19 @@ require_once( 'wp-less/wp-less.php' );
 
 // enqueue a .less style sheet
 if ( ! is_admin() )
-    wp_enqueue_style( 'style', get_stylesheet_directory_uri() . '/lib/bootstrap/less/bootstrap.less' );
+    wp_enqueue_style( 'lessstyle', get_stylesheet_directory_uri() . '/lessstyle.less' );
 
-	
-	function app_template_path() {
+register_sidebar(array(
+	'name' => 'Sidebar',
+	'id' => 'sidebar',
+	'description' => 'Sidebar.',
+	'before_title' => '<h2 class="widget-title">',
+	'after_title' => '</h2>',
+	'before_widget' => '<div id="%1$s" class="well widget sidebar-widget %2$s">',
+	'after_widget'  => '</div>'
+));
+
+function app_template_path() {
 	return APP_Wrapping::$main_template;
 }
 
