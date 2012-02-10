@@ -42,14 +42,23 @@
 					</a>
 					<a class="brand" href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a>
 					<div class="nav-collapse">
-						<ul class="nav">
-							<li class="active"><a href="<?php echo home_url(); ?>">Home</a></li>
-						</ul>
+						<?php
+						if(has_nav_menu('header-menu')){
+							$args = array(
+								'theme_location'	=>	'header-menu',
+								'depth'				=>	2,
+								'walker'			=>	new Bootstrap_Walker_Nav_Menu(),
+								'menu_class'      	=> 'menu nav'
+							);
+							wp_nav_menu( $args );
+						}
+						?>
 					</div><!--/.nav-collapse -->
+					
 				</div>
 			</div>
 		</div>
 	</header>
 	<div class="container">
-		<div role="main" id="main">
+		<div role="main" id="main" class="row">
 		
