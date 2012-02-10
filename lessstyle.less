@@ -61,6 +61,7 @@
 
 // Utility classes
 @import "lib/bootstrap/less/utilities.less"; // Has to be last to override when necessary
+@import "animate.less";
 
 .columns(@c: 1){
 	#gridSystem > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, @c);
@@ -74,9 +75,13 @@
 #primary {
 	.columns(8);
 	min-height:10px;
+	.animated();
+	.fadeIn();
 }
 #sidebar {
 	.columns(4);
+	.animated();
+	.fadeInUp();
 }
 #sidebar {
 	.widget {
@@ -87,4 +92,12 @@
 			h6();
 		}
 	}
+}
+.dropdown-menu{
+	.animated();
+	.fadeInUp();
+}
+.navbar {
+	.animated();
+	.fadeInDown();
 }
