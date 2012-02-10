@@ -9,7 +9,7 @@ Included libraries/tools
 -------
 
 * [Twitter Bootstrap 2](https://github.com/twitter/bootstrap/)
-* HTML5 Boilerplate has been used as the basis for the markup, comments have been preserved, and added to for WordPress support and best practices
+* [HTML5 Boilerplate 3](http://html5boilerplate.com/) has been used as the basis for the markup, comments have been preserved, and added to for WordPress support and best practices
 * [WP-Less by sanchothefat](https://github.com/sanchothefat/wp-less), allows the LESS stylesheets to be queued using the WordPress default APIs, and auto recompiles via PHP on changes
 * [Scribu theme wrapper code](http://scribu.net/wordpress/theme-wrappers.html)
 
