@@ -4,8 +4,11 @@
 require_once( 'wp-less/wp-less.php' );
 
 // enqueue a .less style sheet
-if ( ! is_admin() )
+if ( ! is_admin() ){
+	wp_enqueue_style( 'animatecss', get_stylesheet_directory_uri() . '/lib/animate/animate.css' );
     wp_enqueue_style( 'lessstyle', get_stylesheet_directory_uri() . '/lessstyle.less' );
+	
+}
 
 register_sidebar(array(
 	'name' => 'Sidebar',

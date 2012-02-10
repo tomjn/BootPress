@@ -1,0 +1,490 @@
+/*
+Animate.css - http://daneden.me/animate
+LICENSED UNDER THE  MIT LICENSE (MIT)
+
+Copyright (c) 2011 Dan Eden
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+
+.animated {
+	-webkit-animation: 1s ease;
+	   -moz-animation: 1s ease;
+	    -ms-animation: 1s ease;
+	     -o-animation: 1s ease;
+	        animation: 1s ease;
+	-webkit-animation-fill-mode: both;
+	   -moz-animation-fill-mode: both;
+	    -ms-animation-fill-mode: both;
+	     -o-animation-fill-mode: both;
+	        animation-fill-mode: both;
+}
+
+.animated.hinge {
+	-webkit-animation: 2s ease;
+	   -moz-animation: 2s ease;
+	    -ms-animation: 2s ease;
+	     -o-animation: 2s ease;
+	        animation: 2s ease;
+}
+
+.flash {
+	-webkit-animation-name: flash;
+	-moz-animation-name: flash;
+	-ms-animation-name: flash;
+	-o-animation-name: flash;
+	animation-name: flash;
+}
+
+.shake {
+	-webkit-animation-name: shake;
+	-moz-animation-name: shake;
+	-ms-animation-name: shake;
+	-o-animation-name: shake;
+	animation-name: shake;
+}
+
+.bounce {
+	-webkit-animation-name: bounce;
+	-moz-animation-name: bounce;
+	-ms-animation-name: bounce;
+	-o-animation-name: bounce;
+	animation-name: bounce;
+}
+
+.tada {
+	-webkit-animation-name: tada;
+	-moz-animation-name: tada;
+	-ms-animation-name: tada;
+	-o-animation-name: tada;
+	animation-name: tada;
+}
+
+.swing {
+	-webkit-transform-origin: top center;
+	-moz-transform-origin: top center;
+	-ms-transform-origin: top center;
+	-o-transform-origin: top center;
+	transform-origin: top center;
+	-webkit-animation-name: swing;
+	-moz-animation-name: swing;
+	-ms-animation-name: swing;
+	-o-animation-name: swing;
+	animation-name: swing;
+}
+/* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
+
+.wobble {
+	-webkit-animation-name: wobble;
+	-moz-animation-name: wobble;
+	-ms-animation-name: wobble;
+	-o-animation-name: wobble;
+	animation-name: wobble;
+}
+/* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
+
+.pulse {
+	-webkit-animation-name: pulse;
+	-moz-animation-name: pulse;
+	-ms-animation-name: pulse;
+	-o-animation-name: pulse;
+	animation-name: pulse;
+}
+
+.flip {
+	-webkit-backface-visibility: visible !important;
+	-webkit-animation-name: flip;
+	-moz-backface-visibility: visible !important;
+	-moz-animation-name: flip;
+	-ms-backface-visibility: visible !important;
+	-ms-animation-name: flip;
+	-o-backface-visibility: visible !important;
+	-o-animation-name: flip;
+	backface-visibility: visible !important;
+	animation-name: flip;
+}
+
+.flipInX {
+	-webkit-backface-visibility: visible !important;
+	-webkit-animation-name: flipInX;
+	-moz-backface-visibility: visible !important;
+	-moz-animation-name: flipInX;
+	-ms-backface-visibility: visible !important;
+	-ms-animation-name: flipInX;
+	-o-backface-visibility: visible !important;
+	-o-animation-name: flipInX;
+	backface-visibility: visible !important;
+	animation-name: flipInX;
+}
+
+.flipOutX {
+	-webkit-animation-name: flipOutX;
+	-webkit-backface-visibility: visible !important;
+	-moz-animation-name: flipOutX;
+	-moz-backface-visibility: visible !important;
+	-ms-animation-name: flipOutX;
+	-ms-backface-visibility: visible !important;
+	-o-animation-name: flipOutX;
+	-o-backface-visibility: visible !important;
+	animation-name: flipOutX;
+	backface-visibility: visible !important;
+}
+
+.flipInY {
+	-webkit-backface-visibility: visible !important;
+	-webkit-animation-name: flipInY;
+	-moz-backface-visibility: visible !important;
+	-moz-animation-name: flipInY;
+	-ms-backface-visibility: visible !important;
+	-ms-animation-name: flipInY;
+	-o-backface-visibility: visible !important;
+	-o-animation-name: flipInY;
+	backface-visibility: visible !important;
+	animation-name: flipInY;
+}
+
+.flipOutY {
+	-webkit-backface-visibility: visible !important;
+	-webkit-animation-name: flipOutY;
+	-moz-backface-visibility: visible !important;
+	-moz-animation-name: flipOutY;
+	-ms-backface-visibility: visible !important;
+	-ms-animation-name: flipOutY;
+	-o-backface-visibility: visible !important;
+	-o-animation-name: flipOutY;
+	backface-visibility: visible !important;
+	animation-name: flipOutY;
+}
+
+.fadeIn {
+	-webkit-animation-name: fadeIn;
+	-moz-animation-name: fadeIn;
+	-ms-animation-name: fadeIn;
+	-o-animation-name: fadeIn;
+	animation-name: fadeIn;
+}
+
+.fadeInUp {
+	-webkit-animation-name: fadeInUp;
+	-moz-animation-name: fadeInUp;
+	-ms-animation-name: fadeInUp;
+	-o-animation-name: fadeInUp;
+	animation-name: fadeInUp;
+}
+
+.fadeInDown {
+	-webkit-animation-name: fadeInDown;
+	-moz-animation-name: fadeInDown;
+	-ms-animation-name: fadeInDown;
+	-o-animation-name: fadeInDown;
+	animation-name: fadeInDown;
+}
+
+.fadeInLeft {
+	-webkit-animation-name: fadeInLeft;
+	-moz-animation-name: fadeInLeft;
+	-ms-animation-name: fadeInLeft;
+	-o-animation-name: fadeInLeft;
+	animation-name: fadeInLeft;
+}
+
+.fadeInRight {
+	-webkit-animation-name: fadeInRight;
+	-moz-animation-name: fadeInRight;
+	-ms-animation-name: fadeInRight;
+	-o-animation-name: fadeInRight;
+	animation-name: fadeInRight;
+}
+
+.fadeInUpBig {
+	-webkit-animation-name: fadeInUpBig;
+	-moz-animation-name: fadeInUpBig;
+	-ms-animation-name: fadeInUpBig;
+	-o-animation-name: fadeInUpBig;
+	animation-name: fadeInUpBig;
+}
+
+.fadeInDownBig {
+	-webkit-animation-name: fadeInDownBig;
+	-moz-animation-name: fadeInDownBig;
+	-ms-animation-name: fadeInDownBig;
+	-o-animation-name: fadeInDownBig;
+	animation-name: fadeInDownBig;
+}
+
+.fadeInLeftBig {
+	-webkit-animation-name: fadeInLeftBig;
+	-moz-animation-name: fadeInLeftBig;
+	-ms-animation-name: fadeInLeftBig;
+	-o-animation-name: fadeInLeftBig;
+	animation-name: fadeInLeftBig;
+}
+
+.fadeInRightBig {
+	-webkit-animation-name: fadeInRightBig;
+	-moz-animation-name: fadeInRightBig;
+	-ms-animation-name: fadeInRightBig;
+	-o-animation-name: fadeInRightBig;
+	animation-name: fadeInRightBig;
+}
+
+.fadeOut {
+	-webkit-animation-name: fadeOut;
+	-moz-animation-name: fadeOut;
+	-ms-animation-name: fadeOut;
+	-o-animation-name: fadeOut;
+	animation-name: fadeOut;
+}
+
+.fadeOutUp {
+	-webkit-animation-name: fadeOutUp;
+	-moz-animation-name: fadeOutUp;
+	-ms-animation-name: fadeOutUp;
+	-o-animation-name: fadeOutUp;
+	animation-name: fadeOutUp;
+}
+
+.fadeOutDown {
+	-webkit-animation-name: fadeOutDown;
+	-moz-animation-name: fadeOutDown;
+	-ms-animation-name: fadeOutDown;
+	-o-animation-name: fadeOutDown;
+	animation-name: fadeOutDown;
+}
+
+.fadeOutLeft {
+	-webkit-animation-name: fadeOutLeft;
+	-moz-animation-name: fadeOutLeft;
+	-ms-animation-name: fadeOutLeft;
+	-o-animation-name: fadeOutLeft;
+	animation-name: fadeOutLeft;
+}
+
+.fadeOutRight {
+	-webkit-animation-name: fadeOutRight;
+	-moz-animation-name: fadeOutRight;
+	-ms-animation-name: fadeOutRight;
+	-o-animation-name: fadeOutRight;
+	animation-name: fadeOutRight;
+}
+
+.fadeOutUpBig {
+	-webkit-animation-name: fadeOutUpBig;
+	-moz-animation-name: fadeOutUpBig;
+	-ms-animation-name: fadeOutUpBig;
+	-o-animation-name: fadeOutUpBig;
+	animation-name: fadeOutUpBig;
+}
+
+.fadeOutDownBig {
+	-webkit-animation-name: fadeOutDownBig;
+	-moz-animation-name: fadeOutDownBig;
+	-ms-animation-name: fadeOutDownBig;
+	-o-animation-name: fadeOutDownBig;
+	animation-name: fadeOutDownBig;
+}
+
+.fadeOutLeftBig {
+	-webkit-animation-name: fadeOutLeftBig;
+	-moz-animation-name: fadeOutLeftBig;
+	-ms-animation-name: fadeOutLeftBig;
+	-o-animation-name: fadeOutLeftBig;
+	animation-name: fadeOutLeftBig;
+}
+
+.fadeOutRightBig {
+	-webkit-animation-name: fadeOutRightBig;
+	-moz-animation-name: fadeOutRightBig;
+	-ms-animation-name: fadeOutRightBig;
+	-o-animation-name: fadeOutRightBig;
+	animation-name: fadeOutRightBig;
+}
+
+.bounceIn {
+	-webkit-animation-name: bounceIn;
+	-moz-animation-name: bounceIn;
+	-ms-animation-name: bounceIn;
+	-o-animation-name: bounceIn;
+	animation-name: bounceIn;
+}
+
+.bounceInUp {
+	-webkit-animation-name: bounceInUp;
+	-moz-animation-name: bounceInUp;
+	-ms-animation-name: bounceInUp;
+	-o-animation-name: bounceInUp;
+	animation-name: bounceInUp;
+}
+
+.bounceInDown {
+	-webkit-animation-name: bounceInDown;
+	-moz-animation-name: bounceInDown;
+	-ms-animation-name: bounceInDown;
+	-o-animation-name: bounceInDown;
+	animation-name: bounceInDown;
+}
+
+.bounceInLeft {
+	-webkit-animation-name: bounceInLeft;
+	-moz-animation-name: bounceInLeft;
+	-ms-animation-name: bounceInLeft;
+	-o-animation-name: bounceInLeft;
+	animation-name: bounceInLeft;
+}
+
+.bounceInRight {
+	-webkit-animation-name: bounceInRight;
+	-moz-animation-name: bounceInRight;
+	-ms-animation-name: bounceInRight;
+	-o-animation-name: bounceInRight;
+	animation-name: bounceInRight;
+}
+
+.bounceOut {
+	-webkit-animation-name: bounceOut;
+	-moz-animation-name: bounceOut;
+	-ms-animation-name: bounceOut;
+	-o-animation-name: bounceOut;
+	animation-name: bounceOut;
+}
+
+.bounceOutUp {
+	-webkit-animation-name: bounceOutUp;
+	-moz-animation-name: bounceOutUp;
+	-ms-animation-name: bounceOutUp;
+	-o-animation-name: bounceOutUp;
+	animation-name: bounceOutUp;
+}
+
+.bounceOutDown {
+	-webkit-animation-name: bounceOutDown;
+	-moz-animation-name: bounceOutDown;
+	-ms-animation-name: bounceOutDown;
+	animation-name: bounceOutDown;
+}
+
+.bounceOutLeft {
+	-webkit-animation-name: bounceOutLeft;
+	-moz-animation-name: bounceOutLeft;
+	-ms-animation-name: bounceOutLeft;
+	-o-animation-name: bounceOutLeft;
+	animation-name: bounceOutLeft;
+}
+
+.bounceOutRight {
+	-webkit-animation-name: bounceOutRight;
+	-moz-animation-name: bounceOutRight;
+	-ms-animation-name: bounceOutRight;
+	-o-animation-name: bounceOutRight;
+	animation-name: bounceOutRight;
+}
+
+.rotateIn {
+	-webkit-animation-name: rotateIn;
+	-moz-animation-name: rotateIn;
+	-ms-animation-name: rotateIn;
+	-o-animation-name: rotateIn;
+	animation-name: rotateIn;
+}
+
+.rotateInUpLeft {
+	-webkit-animation-name: rotateInUpLeft;
+	-moz-animation-name: rotateInUpLeft;
+	-ms-animation-name: rotateInUpLeft;
+	-o-animation-name: rotateInUpLeft;
+	animation-name: rotateInUpLeft;
+}
+
+.rotateInDownLeft {
+	-webkit-animation-name: rotateInDownLeft;
+	-moz-animation-name: rotateInDownLeft;
+	-ms-animation-name: rotateInDownLeft;
+	-o-animation-name: rotateInDownLeft;
+	animation-name: rotateInDownLeft;
+}
+
+.rotateInUpRight {
+	-webkit-animation-name: rotateInUpRight;
+	-moz-animation-name: rotateInUpRight;
+	-ms-animation-name: rotateInUpRight;
+	-o-animation-name: rotateInUpRight;
+	animation-name: rotateInUpRight;
+}
+
+.rotateInDownRight {
+	-webkit-animation-name: rotateInDownRight;
+	-moz-animation-name: rotateInDownRight;
+	-ms-animation-name: rotateInDownRight;
+	-o-animation-name: rotateInDownRight;
+	animation-name: rotateInDownRight;
+}
+
+.rotateOut {
+	-webkit-animation-name: rotateOut;
+	-moz-animation-name: rotateOut;
+	-ms-animation-name: rotateOut;
+	-o-animation-name: rotateOut;
+	animation-name: rotateOut;
+}
+
+.rotateOutUpLeft {
+	-webkit-animation-name: rotateOutUpLeft;
+	-moz-animation-name: rotateOutUpLeft;
+	-ms-animation-name: rotateOutUpLeft;
+	-o-animation-name: rotateOutUpLeft;
+	animation-name: rotateOutUpLeft;
+}
+
+.rotateOutDownLeft {
+	-webkit-animation-name: rotateOutDownLeft;
+	-moz-animation-name: rotateOutDownLeft;
+	-ms-animation-name: rotateOutDownLeft;
+	-o-animation-name: rotateOutDownLeft;
+	animation-name: rotateOutDownLeft;
+}
+
+.rotateOutUpRight {
+	-webkit-animation-name: rotateOutUpRight;
+	-moz-animation-name: rotateOutUpRight;
+	-ms-animation-name: rotateOutUpRight;
+	-o-animation-name: rotateOutUpRight;
+	animation-name: rotateOutUpRight;
+}
+
+.rotateOutDownRight {
+	-webkit-animation-name: rotateOutDownRight;
+	-moz-animation-name: rotateOutDownRight;
+	-ms-animation-name: rotateOutDownRight;
+	-o-animation-name: rotateOutDownRight;
+	animation-name: rotateOutDownRight;
+}
+
+.hinge {
+	-webkit-animation-name: hinge;
+	-moz-animation-name: hinge;
+	-ms-animation-name: hinge;
+	-o-animation-name: hinge;
+	animation-name: hinge;
+}
+/* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
+
+.rollIn {
+	-webkit-animation-name: rollIn;
+	-moz-animation-name: rollIn;
+	-ms-animation-name: rollIn;
+	-o-animation-name: rollIn;
+	animation-name: rollIn;
+}
+/* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
+
+.rollOut {
+	-webkit-animation-name: rollOut;
+	-moz-animation-name: rollOut;
+	-ms-animation-name: rollOut;
+	-o-animation-name: rollOut;
+	animation-name: rollOut;
+}

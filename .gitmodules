@@ -4,3 +4,6 @@
 [submodule "lib/bootstrap"]
 	path = lib/bootstrap
 	url = https://github.com/twitter/bootstrap.git
+[submodule "lib/animate"]
+	path = lib/animate
+	url = https://github.com/daneden/animate.css.git
