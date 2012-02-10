@@ -40,7 +40,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</a>
-					<a class="brand" href="#"><?php bloginfo('name'); ?></a>
+					<a class="brand" href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a>
 					<div class="nav-collapse">
 						<ul class="nav">
 							<li class="active"><a href="<?php echo home_url(); ?>">Home</a></li>
