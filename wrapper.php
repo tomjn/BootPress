@@ -2,7 +2,7 @@
  
 <?php get_header( $base ); ?>
  
-<section id="primary" class="span8">
+<section id="primary">
 	<div id="content" role="main">
  
 	<?php include app_template_path(); ?>

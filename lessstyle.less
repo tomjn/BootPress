@@ -62,14 +62,22 @@
 // Utility classes
 @import "lib/bootstrap/less/utilities.less"; // Has to be last to override when necessary
 
+.columns(@c: 1){
+	#gridSystem > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, @c);
+	#gridSystem > .gridColumn(@gridGutterWidth);
+}
+
 #main {
 	
 }
 
 #primary {
+	.columns(8);
 	min-height:10px;
 }
-
+#sidebar {
+	.columns(4);
+}
 #sidebar {
 	.widget {
 		.sidebar-nav();
