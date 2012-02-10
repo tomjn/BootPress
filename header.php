@@ -31,3 +31,7 @@
 	<script src="js/libs/modernizr-2.5.2.min.js"></script> */ ?>
 </head>
 <body <?php body_class(); ?>>
+	<header>
+	</header>
+	<div role="main">
+		
