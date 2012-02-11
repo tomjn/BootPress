@@ -53,6 +53,9 @@
 							wp_nav_menu( $args );
 						}
 						?>
+						<form class="navbar-search pull-right" action="<?php home_url(); ?>" method="get">
+							<input type="text" class="search-query span2" name="s" placeholder="Search">
+						</form>
 					</div><!--/.nav-collapse -->
 					
 				</div>
