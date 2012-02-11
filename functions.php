@@ -16,7 +16,7 @@ register_sidebar(array(
 	'description' => 'Sidebar.',
 	'before_title' => '<h2 class="widget-title">',
 	'after_title' => '</h2>',
-	'before_widget' => '<div id="%1$s" class="well widget sidebar-widget %2$s">',
+	'before_widget' => '<div id="%1$s" class="widget sidebar-widget %2$s">',
 	'after_widget'  => '</div>'
 ));
 

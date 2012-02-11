@@ -63,6 +63,70 @@
 @import "lib/bootstrap/less/utilities.less"; // Has to be last to override when necessary
 @import "animate.less";
 
+// BASE CLASS
+// ----------
+
+.widget ul {
+  margin-left: 0;
+  margin-bottom: @baseLineHeight;
+  list-style: none;
+}
+
+// Make links block level
+.widget  li > a {
+  display: block;
+}
+.widget  li > a:hover {
+  text-decoration: none;
+  background-color: @grayLighter;
+}
+
+
+
+// NAV LIST
+// --------
+
+.widget ul{
+  padding-left: 18px;
+  padding-right: 18px;
+  margin-bottom: 0;
+}
+.widget  li > a,
+.widget .widget-title {
+  display: block;
+  padding: 3px 19px;
+  margin-left:  -19px;
+  margin-right: -19px;
+  text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+.widget .widget-title {
+  font-size: 11px;
+  font-weight: bold;
+  line-height: @baseLineHeight;
+  color: @grayLight;
+  text-transform: uppercase;
+}
+
+.active_nav_item(){
+	color: @white;
+	text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+	background-color: @linkColor;
+}
+.widget {
+	.active > a,
+	.active > a:hover,
+	.current-cat > a,
+	.current-cat > a:hover,
+	.current-menu-item > a,
+	.current-menu-item > a:hover,
+	.current_page_item > a,
+	.current_page_item > a:hover{
+		.active_nav_item();
+	}
+}
+.widget [class^="icon-"] {
+  margin-right: 2px;
+}
 .columns(@c: 1){
 	#gridSystem > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, @c);
 	#gridSystem > .gridColumn(@gridGutterWidth);
@@ -79,17 +143,21 @@
 	.fadeIn();
 }
 #sidebar {
+	
 	.columns(4);
 	.animated();
 	.fadeInUp();
-}
-#sidebar {
+	
 	.widget {
-		.sidebar-nav();
-		
-		
-		.title {
-			h6();
+		.nav();
+		.nav-list();
+		.well();
+		ul {
+			padding: 0;
+		}
+		padding-top:9px;
+		.widget-title {
+			.nav-header();
 		}
 	}
 }
@@ -100,4 +168,8 @@
 .navbar {
 	.animated();
 	.fadeInDown();
+}
+
+.comment-body {
+	.well();
 }
