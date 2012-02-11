@@ -18,7 +18,10 @@
  * @since Twenty Ten 1.0
  */
 ?>
-
+<div class="hero-unit">
+	<h1><?php bloginfo('name'); ?></h1>
+	<p><?php bloginfo('description'); ?></p>
+</div>
 <?php /* Display navigation to next/previous pages when applicable */ ?>
 <?php if ( $wp_query->max_num_pages > 1 ) : ?>
 	<div id="nav-above" class="navigation">
@@ -127,6 +130,7 @@
 <?php /* How to display all other posts. */ ?>
 
 	<?php else : ?>
+		<hr>
 		<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<h2 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyten' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 
@@ -143,6 +147,7 @@
 				<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentyten' ) ); ?>
 				<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'twentyten' ), 'after' => '</div>' ) ); ?>
 			</div><!-- .entry-content -->
+			
 	<?php endif; ?>
 
 			<div class="entry-utility">
@@ -165,7 +170,7 @@
 				<?php edit_post_link( __( 'Edit', 'twentyten' ), '<span class="meta-sep">|</span> <span class="edit-link">', '</span>' ); ?>
 			</div><!-- .entry-utility -->
 		</div><!-- #post-## -->
-		<hr>
+		
 
 		<?php comments_template( '', true ); ?>
 
