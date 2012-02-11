@@ -131,6 +131,9 @@ if ( ! function_exists( 'bootstrap_setup' ) ){
 				$item_output = $args->before;
 				$item_output .= '<a'. $attributes .'>';
 				$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
+				if($args->has_children){
+					$item_output .= '<b class="caret"></b>';
+				}
 				$item_output .= '</a>';
 				$item_output .= $args->after;
 
