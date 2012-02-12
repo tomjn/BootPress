@@ -1,3 +1,5 @@
+	</div><!-- #content -->
+</section><!-- #primary -->
 <div id="sidebar">
 
 <?php
