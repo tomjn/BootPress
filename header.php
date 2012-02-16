@@ -32,9 +32,17 @@
 </head>
 <body <?php body_class(); ?>>
 	<header>
+		<?php
+		global $customoptions;
+		$showcontainer = $customoptions->get_option_value('separated_navbar');
+		if($showcontainer){
+		?>
+		<div class="container contained_navbar"><?php
+		}
+		?>
 		<div class="navbar ">
 			<div class="navbar-inner">
-				<div class="container">
+				<div class="container" style="width: auto;">
 					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
@@ -61,6 +69,13 @@
 				</div>
 			</div>
 		</div>
+		<?php
+		if($showcontainer){
+		?>
+		</div>
+		<?php
+		}
+		?>
 	</header>
 	<div class="container">
 		<div role="main" id="main" class="row">
