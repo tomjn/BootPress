@@ -1,8 +1,18 @@
-<?php $base = app_template_base(); ?>
- 
-<?php get_header( $base ); ?>
- 
-	<?php include app_template_path(); ?>
- 
-<?php get_sidebar( $base ); ?>
-<?php get_footer( $base ); ?>
+<?php
+
+global $customoptions;
+$left = $customoptions->get_option_value('sidebar_left');
+
+$base = app_template_base();
+get_header( $base );
+
+if($left == 'yes'){
+	get_sidebar($base);
+}
+
+include app_template_path();
+
+if($left != 'yes'){
+	get_sidebar( $base );
+}
+get_footer( $base );

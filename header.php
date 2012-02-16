@@ -101,5 +101,12 @@
 	</header>
 	<div class="container">
 		<div role="main" id="main" class="row">
+			<?php
+			global $customoptions;
+			$left = $customoptions->get_option_value('sidebar_left');
+			if($left != 'yes'){
+			?>
 			<section id="primary">
 				<div id="content" role="main">
+			<?php
+			}

@@ -365,6 +365,13 @@ function add_theme_settings(){
 		'type'			=>	'checkbox',
 		'placeholder'	=>	''
 	));
+	
+	$customoptions->register_option(array(
+		'name'			=>	'sidebar_left',
+		'human_name'	=>	'Show the sidebar on the left',
+		'type'			=>	'checkbox',
+		'placeholder'	=>	''
+	));
 
 }
 add_action('init','add_theme_settings');

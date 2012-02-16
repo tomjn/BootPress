@@ -1,5 +1,13 @@
+<?php
+global $customoptions;
+$left = $customoptions->get_option_value('sidebar_left');
+if($left != 'yes'){
+?>
 	</div><!-- #content -->
 </section><!-- #primary -->
+<?php
+}
+?>
 <div id="sidebar">
 
 <?php
@@ -15,3 +23,10 @@ if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('sidebar') ) {
 	<?php
 }?>
 </div>
+<?php
+if($left == 'yes'){
+?>
+<section id="primary">
+	<div id="content" role="main">
+<?php
+}
