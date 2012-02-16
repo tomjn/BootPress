@@ -358,6 +358,13 @@ function add_theme_settings(){
 		'type'			=>	'checkbox',
 		'placeholder'	=>	''
 	));
+	
+	$customoptions->register_option(array(
+		'name'			=>	'twostage_navbar',
+		'human_name'	=>	'Show navbar on two levels',
+		'type'			=>	'checkbox',
+		'placeholder'	=>	''
+	));
 
 }
 add_action('init','add_theme_settings');

@@ -52,9 +52,13 @@
 					<div class="nav-collapse">
 						<?php
 						if(has_nav_menu('header-menu')){
+							$depth = 0;
+							if($customoptions->get_option_value('twostage_navbar') == true){
+								$depth = 1;
+							}
 							$args = array(
 								'theme_location'	=>	'header-menu',
-								'depth'				=>	2,
+								'depth'				=>	$depth,
 								'walker'			=>	new Bootstrap_Walker_Nav_Menu(),
 								'menu_class'      	=> 'menu nav'
 							);
@@ -64,6 +68,24 @@
 						<form class="navbar-search pull-right" action="<?php home_url(); ?>" method="get">
 							<input type="text" class="search-query span2" name="s" placeholder="Search">
 						</form>
+						<?php
+						if(has_nav_menu('header-menu')){
+							if($customoptions->get_option_value('twostage_navbar') == true){
+								$args = array(
+									'theme_location'	=>	'header-menu',
+									'walker'			=>	new Bootstrap_Second_Level_Walker_Nav_Menu(),
+									'menu_class'      	=> 'menu nav'
+								);
+								?>
+										<div class="container" style="width:auto;">
+									<?php
+								wp_nav_menu( $args );
+								?>
+								</div>
+								<?php
+							}
+						}
+						?>
 					</div><!--/.nav-collapse -->
 					
 				</div>
