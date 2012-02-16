@@ -42,7 +42,7 @@
 		?>
 		<div class="navbar ">
 			<div class="navbar-inner">
-				<div class="container" style="width: auto;">
+				<div class="container" <?php if($showcontainer){ ?> style="width: auto;"<?php }?>>
 					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
@@ -77,7 +77,7 @@
 									'menu_class'      	=> 'menu nav'
 								);
 								?>
-										<div class="container" style="width:auto;">
+										<div class="container clear" style="width:auto;">
 									<?php
 								wp_nav_menu( $args );
 								?>
