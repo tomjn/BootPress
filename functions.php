@@ -4,12 +4,11 @@
 if ( file_exists(dirname( __FILE__ ).'/includes/globaloptions.php') ) {
 	include_once(dirname( __FILE__ ).'/includes/globaloptions.php');
 }
-
-// Include the class
-require_once( 'wp-less/wp-less.php' );
-
 // enqueue a .less style sheet
 if ( ! is_admin() ){
+	// Include the class
+	require_once( 'wp-less/wp-less.php' );
+
 	wp_enqueue_style( 'animatecss', get_stylesheet_directory_uri() . '/lib/animate/animate.css' );
     wp_enqueue_style( 'lessstyle', get_stylesheet_directory_uri() . '/lessstyle.less' );
 	
@@ -34,7 +33,7 @@ add_action( 'init', 'register_my_menus' );
 
 function register_bootstrap_js() {
 	wp_deregister_script( 'jquery' );
-    wp_register_script( 'jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js');
+    wp_register_script( 'jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js');
     wp_enqueue_script( 'jquery' );
 	wp_register_script( 'bootstrap-dropdown', get_template_directory_uri().'/lib/bootstrap/js/bootstrap-dropdown.js', array('jquery'),'2.0');
 	wp_enqueue_script( 'bootstrap-dropdown' );
