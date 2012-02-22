@@ -170,10 +170,43 @@
 	.fadeInDown();
 }
 
+h1, h2, h3, h4, h5, h6 {
+	margin-top: @baseLineHeight/2;
+	margin-bottom: @baseLineHeight/2;
+}
+
+#respond {
+	.well();
+}
+
+#comment {
+	width:90%;
+	max-width:500px;
+}
+
 .comment-body {
 	.well();
+	padding-left: 60px;
+	
+	.comment-author {
+		.avatar {
+			margin-left: -45px;
+			float: left;
+		}
+	}
+	.comment-meta {
+		margin-bottom: @baseLineHeight/2;
+	}
 }
 
 .contained_navbar {
 	margin-top:10px;
+}
+
+/* a fix for borked sized related products in woocommerce */
+.related ul.products li,
+.upsells.products ul.products li,
+.related ul li,
+.upsells.products ul li {
+	max-width: 150px;
 }
