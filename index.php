@@ -160,14 +160,20 @@
 						<?php printf( __( '<span class="%1$s">Tagged</span> %2$s', 'twentyten' ), 'entry-utility-prep entry-utility-prep-tag-links', $tags_list ); ?>
 					</span>
 					<span class="meta-sep">|</span>
-				<?php endif; ?>
+				<?php endif;
+				if ( comments_open() ) {
+					?>
 				<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'twentyten' ), __( '1 Comment', 'twentyten' ), __( '% Comments', 'twentyten' ) ); ?></span>
-				<?php edit_post_link( __( 'Edit', 'twentyten' ), '<span class="meta-sep">|</span> <span class="edit-link">', '</span>' ); ?>
+				<?php
+				} ?>
 			</div><!-- .entry-utility -->
 		</div><!-- #post-## -->
 		<hr>
 
-		<?php comments_template( '', true ); ?>
+		<?php
+		if ( comments_open() ) {
+			comments_template( '', true );
+		} ?>
 
 	<?php endif; // This was the if statement that broke the loop into three parts based on categories. ?>
 
