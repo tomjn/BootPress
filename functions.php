@@ -8,13 +8,31 @@ if ( file_exists(dirname( __FILE__ ).'/includes/globaloptions.php') ) {
 if ( ! is_admin() ){
 	// Include the class
 	require_once( 'wp-less/wp-less.php' );
-	
+	add_filter( 'less_vars', 'default_bootstrap_less_vars', 10, 2 );
+	function default_bootstrap_less_vars( $vars, $handle ) {
+		// $handle is a reference to the handle used with wp_enqueue_style()
+		$vars[ 'textColor' ] = '@grayDark';
+		
+		//$vars[ '' ] = '';
+		
+		// Navbar
+		$vars[ 'navbarHeight' ] = '40px';
+		$vars[ 'navbarBackground' ] = '@grayDarker';
+		$vars[ 'navbarBackgroundHighlight' ] = '@grayDark';
+		
+		$vars[ 'navbarText' ] = '@grayLight';
+		$vars[ 'navbarLinkColor' ] = '@grayLight';
+		$vars[ 'navbarLinkColorHover' ] = '@white';
+
+		return $vars;
+	}
 	wp_enqueue_style( 'animatecss', get_template_directory_uri() . '/lib/animate/animate.css' );
 	
     wp_enqueue_style( 'lessstyle', get_template_directory_uri() . '/lessstyle.less' );
 	if(is_child_theme()){
 		wp_enqueue_style( 'childlessstyle', get_stylesheet_directory_uri() . '/lessstyle.less' );
 	}
+	
 	
 }
 
