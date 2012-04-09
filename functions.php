@@ -113,118 +113,68 @@ add_action( 'after_setup_theme', 'bootstrap_setup' );
 if ( ! function_exists( 'bootstrap_setup' ) ){
 
 	function bootstrap_setup(){
+		
+		
+		add_filter('nav_menu_css_class',array('Bootstrap_Walker_Nav_Menu','add_classes'),1000,3);
 
 		class Bootstrap_Walker_Nav_Menu extends Walker_Nav_Menu {
-
-
+			
 			function start_lvl( &$output, $depth ) {
-
 				$indent = str_repeat( "\t", $depth );
-				$output	   .= "\n$indent<ul class=\"dropdown-menu\">\n";
-
+				$output	   .= "\n$indent<ul class=\"sub-menu dropdown-menu\">\n";
 			}
-
-			function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
-
-				$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
-
-				$li_attributes = '';
-				$class_names = $value = '';
-
-				$classes = empty( $item->classes ) ? array() : (array) $item->classes;
-				if ($args->has_children){
-					$classes[] 		= 'dropdown';
-					$li_attributes .= 'data-dropdown="dropdown"';
-				}
-				$classes[] = 'menu-item-' . $item->ID;
-				$classes[] = ($item->current || $item->current_item_parent) ? 'active' : '';
-
-
-				$classes = apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args );
-				if(in_array('current-product-ancestor',$classes)){
-					$classes[] = 'active';
-				}
-				$class_names = join( ' ', $classes );
-				
-				$class_names = ' class="' . esc_attr( $class_names ) . '"';
-
-				$id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args );
-				$id = strlen( $id ) ? ' id="' . esc_attr( $id ) . '"' : '';
-
-				$output .= $indent . '<li' . $id . $value . $class_names . $li_attributes . '>';
-
-				$attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
-				$attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
-				$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
-				$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
-				$attributes .= ($args->has_children &&($depth + 1 != $this->max_depth)) 		? ' class="dropdown-toggle"' 					   : '';
-
-				$item_output = $args->before;
-				$item_output .= '<a'. $attributes .'>';
-				$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
-				if($args->has_children &&($depth + 1 != $this->max_depth)){
-					$item_output .= '<b class="caret"></b>';
-				}
-				$item_output .= '</a>';
-				$item_output .= $args->after;
-
-				$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
-			}
-
-			function display_element( $element, &$children_elements, $max_depth, $depth=0, $args, &$output ) {
-
-				if ( !$element )
-					return;
-
-				$this->max_depth = $max_depth;
-
-				$id_field = $this->db_fields['id'];
-
-				//display this element
-				if ( is_array( $args[0] ) )
-					$args[0]['has_children'] = ! empty( $children_elements[$element->$id_field] );
-				else if ( is_object( $args[0] ) )
-					$args[0]->has_children = ! empty( $children_elements[$element->$id_field] );
-				$cb_args = array_merge( array(&$output, $element, $depth), $args);
-				call_user_func_array(array(&$this, 'start_el'), $cb_args);
-
-				$id = $element->$id_field;
-
-				// descend only when the depth is right and there are childrens for this element
-				if ( ($max_depth == 0 || $max_depth > $depth+1 ) && isset( $children_elements[$id]) ) {
-
-					foreach( $children_elements[ $id ] as $child ){
-
-						if ( !isset($newlevel) ) {
-							$newlevel = true;
-							//start the child delimiter
-							$cb_args = array_merge( array(&$output, $depth), $args);
-							call_user_func_array(array(&$this, 'start_lvl'), $cb_args);
-						}
-						$this->display_element( $child, $children_elements, $max_depth, $depth + 1, $args, $output );
+			
+			public static function add_classes($classes , $item, $args){
+				if($item->is_bootstrap == true){
+					if ($item->is_dropdown){
+						$classes[] 		= 'dropdown';
 					}
-						unset( $children_elements[ $id ] );
+					$classes[] = ($item->current || $item->current_item_parent) ? 'active' : '';
+					if(in_array('current-product-ancestor',$classes)){
+						$classes[] = 'active';
+					}
 				}
-
-				if ( isset($newlevel) && $newlevel ){
-					//end the child delimiter
-					$cb_args = array_merge( array(&$output, $depth), $args);
-					call_user_func_array(array(&$this, 'end_lvl'), $cb_args);
+				return $classes;
+			}
+			
+			function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+				if( 1 == $args->depth ) {
+					parent::start_el( &$output, $item, $depth, $args );
+					return;
 				}
-
-				//end this element
-				$cb_args = array_merge( array(&$output, $element, $depth), $args);
-				call_user_func_array(array(&$this, 'end_el'), $cb_args);
-
+		
+				$args_copy = (object) get_object_vars( $args );
+		
+				if ( $item->is_dropdown ) {
+					$item->url = '#';
+					$args_copy->link_after .= '<b class="caret"></b>';
+				}
+		
+				if ( $depth > 1 ){
+					$args_copy->link_before = str_repeat( '&nbsp;', $depth - 1 ) . ' ' . $args_copy->link_before;
+				}
+			
+				$item_html = '';
+				parent::start_el( &$item_html, $item, $depth, $args_copy );
+				
+				if ( $item->is_dropdown )
+					$item_html = str_replace( '<a', '<a class="dropdown-toggle" data-toggle="dropdown"', $item_html );
+				
+				$output .= $item_html;
+			}
+			
+			function display_element( $element, &$children_elements, $max_depth, $depth = 0, $args, &$output ) {
+				$element->is_bootstrap = true;
+				$element->is_dropdown  = ( 0 == $depth ) && ! empty( $children_elements[$element->ID] );
+				parent::display_element( $element, &$children_elements, $max_depth, $depth, $args, &$output );
 			}
 
 		}
-
+		
 		class Bootstrap_Second_Level_Walker_Nav_Menu extends Walker_Nav_Menu {
 
 			public $active_element = null;
 			public $active_parent = null;
-
 
 			function start_lvl( &$output, $depth ) {
 
@@ -234,24 +184,7 @@ if ( ! function_exists( 'bootstrap_setup' ) ){
 			}
 
 			function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
-
-
-				$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
-
-				$li_attributes = '';
-				$class_names = $value = '';
-
-				$classes = empty( $item->classes ) ? array() : (array) $item->classes;
-				if ($args->has_children){
-					$classes[] 		= 'dropdown';
-					$li_attributes .= 'data-dropdown="dropdown"';
-				}
-				$classes[] = 'menu-item-' . $item->ID;
-
-				if($item->current || $item->current_item_parent){
-					$classes[] = 'active';
-				}
-
+				
 				if($item->current){
 
 					$this->active_element = $item->ID;
@@ -262,24 +195,16 @@ if ( ! function_exists( 'bootstrap_setup' ) ){
 						return;
 					}
 				}
-
+				
 				if($item->current_item_parent == 1){
 					$this->active_parent = $item->ID;
 				}
-
+				
 				if($depth == 0){
 					$dontdo = true;
 				} else if((!$item->current)&&($item->menu_item_parent != $this->active_parent)){
 					$dontdo = true;
 				}
-
-				$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
-				
-				$classes = apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args );
-				if(in_array('current-product-ancestor',$classes)){
-					$classes[] = 'active';
-				}
-				$class_names = join( ' ', $classes );
 				
 				if($dontdo){
 					$item_output = $args->before;
@@ -288,86 +213,37 @@ if ( ! function_exists( 'bootstrap_setup' ) ){
 					return;
 				}
 				
-				$class_names = ' class="' . esc_attr( $class_names ) . '"';
-
-				$id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args );
-				$id = strlen( $id ) ? ' id="' . esc_attr( $id ) . '"' : '';
-
-				$output .= $indent . '<li' . $id . $value . $class_names . $li_attributes . '>';
-				$dont_do = false;
-
-
-
-				$attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
-				$attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
-				$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
-				$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
-				$attributes .= ($args->has_children &&($depth + 1 != $this->max_depth)) 		? ' class="dropdown-toggle"' 					   : '';
-
-				$item_output = $args->before;
-				$item_output .= '<a'. $attributes .'>';
-				$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
-				if($args->has_children &&($depth + 1 != $this->max_depth)){
-					$item_output .= '<b class="caret"></b>';
-				}
-				$item_output .= '</a>';
-				$item_output .= $args->after;
-
-				$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
-			}
-
-			function display_element( $element, &$children_elements, $max_depth, $depth=0, $args, &$output ) {
-
-				if ( !$element )
+				if( 1 == $args->depth ) {
+					parent::start_el( &$output, $item, $depth, $args );
 					return;
-
-				$this->max_depth = $max_depth;
-
-
-				/*?><p><pre><?php print_r($element);?></pre></p><?php
-				?><p><pre><?php print_r($children_elements);?></pre></p><?php*/
-				$id_field = $this->db_fields['id'];
-
-				//display this element
-				if ( is_array( $args[0] ) )
-					$args[0]['has_children'] = ! empty( $children_elements[$element->$id_field] );
-				else if ( is_object( $args[0] ) )
-					$args[0]->has_children = ! empty( $children_elements[$element->$id_field] );
-				$cb_args = array_merge( array(&$output, $element, $depth), $args);
-				call_user_func_array(array(&$this, 'start_el'), $cb_args);
-
-				$id = $element->$id_field;
-
-				// descend only when the depth is right and there are childrens for this element
-				if ( ($max_depth == 0 || $max_depth > $depth+1 ) && isset( $children_elements[$id]) ) {
-
-					foreach( $children_elements[ $id ] as $child ){
-
-						if ( !isset($newlevel) ) {
-							$newlevel = true;
-							//start the child delimiter
-							$cb_args = array_merge( array(&$output, $depth), $args);
-							call_user_func_array(array(&$this, 'start_lvl'), $cb_args);
-						}
-						$this->display_element( $child, $children_elements, $max_depth, $depth + 1, $args, $output );
-					}
-						unset( $children_elements[ $id ] );
 				}
-
-				if ( isset($newlevel) && $newlevel ){
-					//end the child delimiter
-					$cb_args = array_merge( array(&$output, $depth), $args);
-					call_user_func_array(array(&$this, 'end_lvl'), $cb_args);
+		
+				$args_copy = (object) get_object_vars( $args );
+		
+				if ( $item->is_dropdown ) {
+					$item->url = '#';
+					$args_copy->link_after .= '<b class="caret"></b>';
 				}
-
-				//end this element
-				$cb_args = array_merge( array(&$output, $element, $depth), $args);
-				call_user_func_array(array(&$this, 'end_el'), $cb_args);
-
+		
+				if ( $depth > 1 ){
+					$args_copy->link_before = str_repeat( '&nbsp;', $depth - 1 ) . ' ' . $args_copy->link_before;
+				}
+			
+				$item_html = '';
+				parent::start_el( &$item_html, $item, $depth, $args_copy );
+				
+				if ( $item->is_dropdown )
+					$item_html = str_replace( '<a', '<a class="dropdown-toggle" data-toggle="dropdown"', $item_html );
+				
+				$output .= $item_html;
 			}
-
+			
+			function display_element( $element, &$children_elements, $max_depth, $depth = 0, $args, &$output ) {
+				$element->is_bootstrap = true;
+				$element->is_dropdown  = ( 0 == $depth ) && ! empty( $children_elements[$element->ID] );
+				parent::display_element( $element, &$children_elements, $max_depth, $depth, $args, &$output );
+			}
 		}
-
 	}
 
 }
