@@ -166,9 +166,9 @@
 	.animated();
 	.fadeInUp();
 }
-.navbar {
+header {
 	.animated();
-	.fadeInDown();
+	.fadeIn();
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -215,4 +215,21 @@ h1, h2, h3, h4, h5, h6 {
 
 input, textarea {
 	max-width:100%;
+}
+
+.current-menu-item {
+	//
+}
+
+.navbar .nav .current-product-ancestor > a,
+.navbar .nav .current-product-ancestor > a:hover{
+  color: @navbarLinkColorHover;
+  text-decoration: none;
+  background-color: @navbarBackground;
+  background-color: rgba(0,0,0,.5);
+}
+
+#breadcrumb {
+	.breadcrumb();
+	padding: 7px 14px !important;
 }

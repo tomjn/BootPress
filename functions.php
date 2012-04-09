@@ -140,7 +140,12 @@ if ( ! function_exists( 'bootstrap_setup' ) ){
 				$classes[] = ($item->current || $item->current_item_parent) ? 'active' : '';
 
 
-				$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
+				$classes = apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args );
+				if(in_array('current-product-ancestor',$classes)){
+					$classes[] = 'active';
+				}
+				$class_names = join( ' ', $classes );
+				
 				$class_names = ' class="' . esc_attr( $class_names ) . '"';
 
 				$id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args );
@@ -268,18 +273,21 @@ if ( ! function_exists( 'bootstrap_setup' ) ){
 					$dontdo = true;
 				}
 
-
+				$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
+				
+				$classes = apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args );
+				if(in_array('current-product-ancestor',$classes)){
+					$classes[] = 'active';
+				}
+				$class_names = join( ' ', $classes );
+				
 				if($dontdo){
 					$item_output = $args->before;
 
 					$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 					return;
 				}
-
-
-
-
-				$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
+				
 				$class_names = ' class="' . esc_attr( $class_names ) . '"';
 
 				$id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args );
